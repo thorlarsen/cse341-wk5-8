@@ -1,0 +1,11 @@
+{
+  "name": "cse341-wk5-8",
+  "version": "1.0.0",
+  "description": "Week 5 - 8 personal project for CSE341",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thor Larsen",
+  "license": "ISC"
+}
