@@ -1,8 +1,9 @@
 // Default router file - routes get directed through here
 
-const routes = require('express').Router();
+const router = require('express').Router();
 
-routes.use('/', require('./home'));
-routes.use('/cards', require('./cards'));
+router.use('/', require('./home'));
+router.use('/cards', require('./cards'));
+router.use('/api-docs', require('./api-docs'));
 
-module.exports = routes;
+module.exports = router;

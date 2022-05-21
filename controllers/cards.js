@@ -12,6 +12,7 @@ exports.create = (req, res) => {
     .catch((err) => {
       res.status(500).send(err.message);
     });
+    // #swagger.description = 'Create a new card and add it to the collection'
 };
 
 exports.getAll = (req, res) => {
@@ -21,5 +22,6 @@ exports.getAll = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send(err.message);
-    }) 
-}
+    });
+    // #swagger.description = 'Show all cards in the collection' 
+};

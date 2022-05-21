@@ -1,0 +1,49 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Minimalist Project Manager API",
+    "description": "An API to help manager cards and users of a project manager",
+    "version": "1.0.0"
+  },
+  "host": "thor-project-wks5-8.herokuapp.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "This will be changed soon. Use GET /cards instead.",
+        "parameters": [],
+        "responses": {},
+        "deprecated": true
+      }
+    },
+    "/cards/": {
+      "post": {
+        "description": "Create a new card and add it to the collection",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "Show all cards in the collection",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
