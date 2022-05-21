@@ -22,7 +22,33 @@
     "/cards/": {
       "post": {
         "description": "Create a new card and add it to the collection",
-        "parameters": [],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "example": "any"
+              },
+              "description": {
+                "example": "any"
+              },
+              "startDate": {
+                "example": "any"
+              },
+              "dueDate": {
+                "example": "any"
+              },
+              "isDone": {
+                "example": "any"
+              },
+              "isBlocked": {
+                "example":"any"
+              }
+            }
+          }
+        }],
         "responses": {
           "201": {
             "description": "Created"
