@@ -18,3 +18,24 @@ Content-Type: application/json
 ### Get all cards
 
 GET http://localhost:8080/cards
+
+// https://thor-project-wks5-8.herokuapp.com tests
+
+### Create a card
+
+POST https://thor-project-wks5-8.herokuapp.com/cards HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Second  Card",
+  "description": "The second card for my project management tool.",
+  "startDate": "05-20-2022",
+  "dueDate": "06-20-2022",
+  "assignedTo": "Thor",
+  "isDone": "false",
+  "isBlocked": "false"
+}
+
+### Get all cards
+
+GET https://thor-project-wks5-8.herokuapp.com/cards
