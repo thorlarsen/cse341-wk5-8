@@ -40,6 +40,9 @@
               "dueDate": {
                 "example": "any"
               },
+              "assignedTo": {
+                "example":"any"
+              },
               "isDone": {
                 "example": "any"
               },
