@@ -7,11 +7,11 @@ const Schema = mongoose.Schema;
 const cardSchema = new Schema({
   title: String,
   description: String,
-  startDate: Date,
-  dueDate: Date,
+  startDate: String,
+  dueDate: String,
   assignedTo: String,
-  isDone: Boolean,
-  isBlocked: Boolean,
+  isDone: String,
+  isBlocked: String,
 });
 
 module.exports = mongoose.model('cards', cardSchema);

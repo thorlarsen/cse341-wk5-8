@@ -14,4 +14,12 @@ exports.create = (req, res) => {
     });
 };
 
-//module.export = create;
+exports.getAll = (req, res) => {
+  Card.find({})
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send(err.message);
+    }) 
+}
