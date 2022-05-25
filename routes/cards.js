@@ -1,12 +1,19 @@
 // Routes for handling cards
 
+const { Router } = require('express');
 const express = require('express');
-const route = express.Router();
+const router = express.Router();
 
 const cardController = require('../controllers/cards');
 
-route.post('/', cardController.create);
+router.post('/', cardController.create);
 
-route.get('/', cardController.getAll);
+router.get('/', cardController.getAll);
 
-module.exports = route;
+router.get('/:id', cardController.getCardById);
+
+router.put('/:id', cardController.updateCardById);
+
+router.delete('/:id', cardController.deleteCardById);
+
+module.exports = router;

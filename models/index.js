@@ -15,13 +15,31 @@ const Schema = mongoose.Schema;
 const cardSchema = new Schema({
   title: String,
   description: String,
-  startDate: String,
-  dueDate: String,
+  startDate: Date,
+  dueDate: Date,
   assignedTo: String,
-  isDone: String,
-  isBlocked: String,
+  isDone: Boolean,
+  isBlocked: Boolean,
 });
 
 db.cards = mongoose.model('cards', cardSchema);
+
+const commentSchema = new Schema({
+  comment: String,
+  cardId: String,
+  user: String,
+  dateAdded: Date,
+  dateModified: Date
+});
+
+db.comments = mongoose.model('comments', commentSchema);
+
+const userSchema = new Schema({
+  email: String,
+  firstName: String,
+  lastName: String
+  });
+
+db.users = mongoose.model('users', userSchema);
 
 module.exports = db;

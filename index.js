@@ -20,7 +20,7 @@ app.listen(port, () => {
 })
 
 const db = require('./models');
-db.mongoose.connect(db.uri)
+db.mongoose.connect(db.uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then ( () => {
     console.log('DB connected');
   })
