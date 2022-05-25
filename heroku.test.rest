@@ -1,0 +1,20 @@
+// https://thor-project-wks5-8.herokuapp.com tests
+
+### Create a card
+
+POST https://thor-project-wks5-8.herokuapp.com/cards HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Third Card",
+  "description": "The third card for my project management tool.",
+  "startDate": "06-01-2022",
+  "dueDate": "06-30-2022",
+  "assignedTo": "Thor",
+  "isDone": "false",
+  "isBlocked": "false"
+}
+
+### Get all cards
+
+GET https://thor-project-wks5-8.herokuapp.com/cards
