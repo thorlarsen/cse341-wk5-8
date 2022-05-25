@@ -42,6 +42,18 @@ Content-Type: application/json
 
 DELETE http://localhost:8080/cards/628914a5379a7cdd86ad7df1
 
+### Create a comment
+
+POST http://localhost:8080/comments HTTP/1.1
+Content-Type: application/json
+
+{
+  "comment": "This is my first test comment",
+  "cardId": "6288fce039bcb2bd2bf3d121",
+  "user": "Thor",
+  "dateAdded": "2022-05-24"
+}
+
 // https://thor-project-wks5-8.herokuapp.com tests
 
 ### Create a card

@@ -1,7 +1,7 @@
 const db = require('../models');
 const Card = db.cards;
 
-exports.create = (req, res) => {
+exports.createCard = (req, res) => {
   const card = new Card(req.body);
   card
     .save()
@@ -17,7 +17,7 @@ exports.create = (req, res) => {
     */
 };
 
-exports.getAll = (req, res) => {
+exports.getAllCards = (req, res) => {
   Card.find({})
     .then((data) => {
       res.send(data);
