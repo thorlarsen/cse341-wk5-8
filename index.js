@@ -10,10 +10,6 @@ const port = process.env.PORT || 8080;
 
 app
   .use(bodyParser.json())
-  /* .use((req, res, next) => {
-    res.setHeader('Allow-Control-Allow-Origin', '*');
-    next(); 
-  }) */
   .use(bodyParser.urlencoded({ extended:true }))
   .use(cors())
   .use('/', require('./routes'));
