@@ -3,16 +3,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const res = require('express/lib/response');
+const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 8080;
 
 app
   .use(bodyParser.json())
-  .use((req, res, next) => {
+  /* .use((req, res, next) => {
     res.setHeader('Allow-Control-Allow-Origin', '*');
-    next();
-  })
+    next(); 
+  }) */
+  .use(bodyParser.urlencoded({ extended:true }))
+  .use(cors())
   .use('/', require('./routes'));
 
 app.listen(port, () => {
