@@ -7,7 +7,7 @@
 const routes = require('express').Router();
 
 routes.get('/', (req, res) => {
-  res.redirect('/cards');
+  res.status(307).redirect('/cards');
   /*
    #swagger.deprecated = true
    #swagger.description = 'This will be changed soon. Use GET /cards instead.'

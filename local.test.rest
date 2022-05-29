@@ -71,3 +71,131 @@ Content-Type: application/json
 ### Delete a comment
 
 DELETE http://localhost:8080/comments/628d98e6028e105a1bf73ab3
+
+### Create a user:
+
+POST http://localhost:8080/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "stevie@me.com",
+  "firstName": "Steve",
+  "lastName": "Stevens"
+}
+
+### Get a user by email 
+
+GET http://localhost:8080/users/stevie@me.com
+
+### Delete a user by email
+
+DELETE http://localhost:8080/users/stevie@me.com
+
+// Negative tests
+
+### Create a card no title
+
+POST http://localhost:8080/cards HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "",
+  "description": "The validation test card for my project management tool.",
+  "startDate": "2022-05-28",
+  "dueDate": "2022-06-22",
+  "assignedTo": "Thor",
+  "isDone":false,
+  "isBlocked":true
+}
+//Should return error
+
+### Create a card no description
+
+POST http://localhost:8080/cards HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Validation Card",
+  "description": "",
+  "startDate": "2022-05-28",
+  "dueDate": "2022-06-22",
+  "assignedTo": "Thor",
+  "isDone":false,
+  "isBlocked":true
+}
+//Should return error
+
+### Create a card no title & no description
+
+POST http://localhost:8080/cards HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "",
+  "description": "",
+  "startDate": "2022-05-28",
+  "dueDate": "2022-06-22",
+  "assignedTo": "Thor",
+  "isDone":false,
+  "isBlocked":true
+}
+//Should return error
+
+### Create a card no dates, assigned to, isdone, and isblocked
+POST http://localhost:8080/cards HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Dates test",
+  "description": "This card should be created without dates, which are not required",
+  "startDate": "",
+  "dueDate": "",
+  "assignedTo": ""
+}
+//Should create card with blank dates and default booleans
+
+### Comments missing 
+
+POST  http://localhost:8080/comments/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "cardId": "6288fce039bcb2bd2bf3d121",
+  "user": "Thor",
+  "dateAdded": "2022-05-27"
+}
+
+### cardId missing
+
+POST  http://localhost:8080/comments/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "comment": "Test input comment",
+  "user": "Thor",
+  "dateAdded": "2022-05-27"
+}
+
+// User controller testing
+
+### Input user info
+
+POST http://localhost:8080/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "thor@larsen.com",
+  "firstName": "Thor",
+  "lastName": "Larsen"
+}
+
+### Test user info
+
+POST http://localhost:8080/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "thorlarsen.com",
+  "firstName": "Thor",
+  "lastName": "Larsen"
+}

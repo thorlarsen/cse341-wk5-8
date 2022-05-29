@@ -67,7 +67,9 @@ db.comments = mongoose.model('comments', commentSchema);
 const userSchema = new Schema({
   email: {
     type: String,
-    required: [true, 'Email address is required']
+    required: [true, 'Email address is required'],
+    match: [/.+\@.+\..+/, 'Please use a valid email address'],
+    unique: [true, 'That email address is already is use']
   },
   firstName: {
     type: String,
