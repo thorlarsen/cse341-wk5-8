@@ -15,13 +15,29 @@
       "get": {
         "description": "This will be changed soon. Use GET /cards instead.",
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "307": {
+            "description": "Temporary Redirect"
+          }
+        },
         "deprecated": true
       }
     },
     "/cards/": {
       "post": {
         "description": "Create a new card and add it to the collection",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      },
+      "get": {
+        "description": "Show all cards in the collection",
         "parameters": [{
           "name": "body",
           "in": "body",
@@ -53,17 +69,26 @@
           }
         }],
         "responses": {
-          "201": {
-            "description": "Created"
+          "200": {
+            "description": "OK"
           },
           "500": {
             "description": "Internal Server Error"
           }
         }
-      },
+      }
+    },
+    "/cards/{id}": {
       "get": {
-        "description": "Show all cards in the collection",
-        "parameters": [],
+        "description": "Retrieve one card based on MongoDB _id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -72,6 +97,248 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "put": {
+        "description": "Update one card based on MongoDB _id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "startDate": {
+                  "example": "any"
+                },
+                "dueDate": {
+                  "example": "any"
+                },
+                "assignedTo": {
+                  "example": "any"
+                },
+                "isDone": {
+                  "example": "any"
+                },
+                "isBlocked": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete one card based on MongoDB _id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/comments/": {
+      "post": {
+        "description": "Create a new comment and add it to the collection",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "comment": {
+                "example": "any"
+              },
+              "cardId": {
+                "example": "any"
+              },
+              "user": {
+                "example": "any"
+              },
+              "dateAdded": {
+                "example": "any"
+              },
+              "isEdited": {
+                "example":false
+              },
+              "dateEdited": {
+                "example": "any"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/comments/{cid}": {
+      "get": {
+        "description": "Show all comments in the collection matching a specific cardId",
+        "parameters": [
+          {
+            "name": "cid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/comments/{id}": {
+      "put": {
+        "description": "Find one comment by _id and update it.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "comment": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      },
+      "delete": {
+        "description": "Find one comment by _id and delete it.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/users/": {
+      "post": {
+        "description": "Create a new user and add it to the users collection",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/users/{email}": {
+      "get": {
+        "description": "Retrieve one user based on email address.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Retrieve one user based on email address and delete it.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/api-docs/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
       }
     }
   }
