@@ -26,18 +26,6 @@
     "/cards/": {
       "post": {
         "description": "Create a new card and add it to the collection",
-        "parameters": [],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        }
-      },
-      "get": {
-        "description": "Show all cards in the collection",
         "parameters": [{
           "name": "body",
           "in": "body",
@@ -68,6 +56,18 @@
             }
           }
         }],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      },
+      "get": {
+        "description": "Show all cards in the collection",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
@@ -283,7 +283,24 @@
     "/users/": {
       "post": {
         "description": "Create a new user and add it to the users collection",
-        "parameters": [],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "example": "any"
+              },
+              "firstName": {
+                "example": "any"
+              },
+              "lastName": {
+                "example": "any"
+              }
+            }
+          }
+        }],
         "responses": {
           "201": {
             "description": "Created"
