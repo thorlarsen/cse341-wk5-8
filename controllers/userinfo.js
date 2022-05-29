@@ -10,7 +10,7 @@ exports.createUser = (req, res) => {
       res.status(201).send(data);
     })
     .catch((err) => {
-      res.status(500).send(err.message);
+      res.status(403).send(err.message || 'There was a problem with updating the database');
     });
     /*
       #swagger.description = 'Create a new user and add it to the users collection'
@@ -20,10 +20,10 @@ exports.createUser = (req, res) => {
 exports.getOneUserByEmail = (req, res) => {
     User.findOne({ email: req.params.email })
     .then((data) => {
-      res.send(data);
+      res.status(200).send(data);
     })
     .catch((err) => {
-      res.status(500).send(err.message);
+      res.status(500).send(err.message || 'There was a problem with the database');
     });
     /*
       #swagger.description = 'Retrieve one user based on email address.'
@@ -36,6 +36,9 @@ exports.deleteUser = (req, res) => {
       res.status(200).send(data);
     })
     .catch((err) => {
-      res.status(500).send(err.message);
+      res.status(403).send(err.message || 'There was a problem with updating the database');
     });
+    /*
+      #swagger.description = 'Retrieve one user based on email address and delete it.'
+    */
 };

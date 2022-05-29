@@ -10,7 +10,7 @@ exports.createCard = (req, res) => {
       res.status(201).send(data);
     })
     .catch((err) => {
-      res.status(500).send(err.message);
+      res.status(403).send(err.message || 'There was a problem with updating the database');
     });
     /*
       #swagger.description = 'Create a new card and add it to the collection'
@@ -23,7 +23,7 @@ exports.getAllCards = (req, res) => {
       res.status(200).send(data);
     })
     .catch((err) => {
-      res.status(500).send(err.message);
+      res.status(500).send(err.message || 'There was a problem with the database');
     });
     /*
       #swagger.description = 'Show all cards in the collection' 
@@ -37,7 +37,7 @@ exports.getCardById = (req, res) => {
       res.send(data);
     })
     .catch((err) => {
-      res.status(500).send(err.message);
+      res.status(500).send(err.message || 'There was a problem with the database');
     });
     /*
       #swagger.description = 'Retrieve one card based on MongoDB _id.'
@@ -60,8 +60,11 @@ exports.updateCardById = (req, res) => {
       res.send(data);
     })
     .catch((err) => {
-      res.status(500).send(err.message);
+      res.status(403).send(err.message || 'There was a problem with updating the database');
     });
+    /*
+      #swagger.description = 'Update one card based on MongoDB _id'
+    */
 };
 
 exports.deleteCardById = (req, res) => {
@@ -71,6 +74,9 @@ exports.deleteCardById = (req, res) => {
       res.send(data);
     })
     .catch((err) => {
-      res.status(500).send(err.message);
+      res.status(403).send(err.message || 'There was a problem with updating the database');
     });
+    /*
+      #swagger.description = 'Delete one card based on MongoDB _id'
+    */
 };
