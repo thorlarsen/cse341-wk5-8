@@ -1,4 +1,4 @@
-// index.js - everything gets is start here
+// index.js - everything gets its start here
 
 const express = require('express');
 const bodyParser = require('body-parser');

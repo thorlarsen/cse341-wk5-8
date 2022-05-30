@@ -1,3 +1,5 @@
+const createError = require('http-errors');
+const { mongoose } = require('../models');
 const db = require('../models');
 const Card = db.cards;
 
@@ -30,14 +32,22 @@ exports.getAllCards = (req, res) => {
     */
 };
 
-exports.getCardById = (req, res) => {
+exports.getCardById = (req, res, next) => {
   const cardId = req.params.id;
   Card.findById(cardId)
     .then((data) => {
-      res.send(data);
+      if (!data) {
+        throw createError(404, 'Card ID not found')
+      }
+      else res.send(data);
     })
-    .catch((err) => {
-      res.status(500).send(err.message || 'There was a problem with the database');
+    .catch((error) => {
+      //res.status(501).send(err.message || 'There was a problem with the database');
+      if (error instanceof mongoose.CastError) {
+        next(createError(400, 'Invalid Card ID'));
+        return;
+      }
+      next(error);
     });
     /*
       #swagger.description = 'Retrieve one card based on MongoDB _id.'
