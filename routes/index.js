@@ -10,8 +10,8 @@ routes.use('/comments', require('./comments'));
 routes.use('/users', require('./users'));
 routes.use('/api-docs', require('./api-docs'));
 
-// For invalid paths pass an http 404 error
-routes.use((req,res, next) => {
+// For invalid paths return an http 404 error
+routes.use((req, res, next) => {
   next(createError(404, "404: Path not found"))
 });
 

@@ -1,4 +1,5 @@
-const res = require('express/lib/response');
+const createError = require('http-errors');
+const { mongoose } = require('../models');
 const db = require('../models');
 const Comment = db.comments;
 
@@ -18,37 +19,53 @@ exports.createComment = (req, res) => {
     */
 };
 
-exports.getAllCommentsByCardId = (req, res) => {
+exports.getAllCommentsByCardId = (req, res, next) => {
   const _cardId = req.params.cid;
   Comment.find({cardId: _cardId})
     .then((data) => {
-      res.status(200).send(data);
+      if (data = []) {
+        throw createError(400, 'Card ID not found')
+      }
+      else res.status(200).send(data);
     })
-    .catch((err) => {
-      res.status(500).send(err.message || 'There was a problem with the database');
+    .catch((error) => {
+      //res.status(500).send(err.message || 'There was a problem with the database');
+      /* if (error instanceof mongoose.CastError) {
+        next(createError(400, 'Invalid Card ID'));
+        return;
+      } */
+      next(error);
     });
     /*
       #swagger.description = 'Show all comments in the collection matching a specific cardId'
     */
 };
 
-exports.updateCommentById = (req, res) => {
+exports.updateCommentById = (req, res, next) => {
   Comment.findOneAndUpdate( {_id: req.params.id}, {
     comment: req.body.comment,
     dateModified: req.body.comment || date.now()
   })
     .then((data) => {
-      res.status(200).send(data);
+      if (!data) {
+        throw createError(400, 'Card ID not found')
+      }
+      else res.status(200).send(data);
     })
-    .catch((err) => {
-      res.status(403).send(err.message || 'There was a problem with updating the database');
-    })
+    .catch((error) => {
+      //res.status(403).send(err.message || 'There was a problem with updating the database');
+      if (error instanceof mongoose.CastError) {
+        next(createError(400, 'Invalid Card ID'));
+        return;
+      }
+      next(error);
+    });
     /*
       #swagger.description = 'Find one comment by _id and update it.'
     */
 };
 
-exports.deleteComment = (req, res) => {
+exports.deleteComment = (req, res, next) => {
   Comment.findOneAndDelete( {_id: req.params.id} )
     .then((data) => {
       res.status(200).send(data);

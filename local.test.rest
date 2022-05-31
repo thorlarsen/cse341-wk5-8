@@ -56,15 +56,15 @@ Content-Type: application/json
 
 ### Get all comments by card ID
 
-GET http://localhost:8080/comments/6288fce039bcb2bd2bf3d121
+GET http://localhost:8080/comments/6288fce039bcb2bd2bf3d120
 
 ### Update comment by ID
 
-PUT http://localhost:8080/comments/628d8d388948684405d3c135 HTTP/1.1
+PUT http://localhost:8080/comments/628d8d388948684405d3c134 HTTP/1.1
 Content-Type: application/json
 
 {
-  "comment": "I'm changing this comment and adding and update date",
+  "comment": "Error handling test adding comment by wrong ID, take two",
   "dateModified": "2022-05-24"
 }
 
