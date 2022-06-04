@@ -1,4 +1,6 @@
+const createError = require('http-errors');
 const db = require('../models');
+const { mongoose } = require('../models');
 const User = db.users;
 
 exports.createUser = (req, res) => {
