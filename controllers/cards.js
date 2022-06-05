@@ -87,8 +87,6 @@ exports.deleteCardById = (req, res) => {
       else res.send(data);
     })
     .catch((err) => {
-      //Keeping the line below in comments until I'm sure my new error handling is working
-      //res.status(403).send(err.message || 'There was a problem with updating the database');
       if (error instanceof mongoose.CastError) {
         next(createError(400, 'Invalid Card ID'));
         return;
