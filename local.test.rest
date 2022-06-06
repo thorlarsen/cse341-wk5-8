@@ -6,10 +6,10 @@ POST http://localhost:8080/cards HTTP/1.1
 Content-Type: application/json
 
 {
-  "title": "Validation Card",
-  "description": "The validation test card for my project management tool.",
-  "startDate": "2022-05-28",
-  "dueDate": "2022-06-22",
+  "title": "New Model Config Card",
+  "description": "This card is a test addeded after my new model configuration.",
+  "startDate": "",
+  "dueDate": "",
   "assignedTo": "Thor",
   "isDone":false,
   "isBlocked":true
@@ -25,7 +25,7 @@ GET http://localhost:8080/cards/628ae9c3eaedf5771995e3c7
 
 ### Update a card
 
-PUT http://localhost:8080/cards/628914a5379a7cdd86ad7df1 HTTP/1.1
+PUT http://localhost:8080/cards/629e71c492babe8e0222faf1 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -34,8 +34,8 @@ Content-Type: application/json
   "startDate": "2022-05-22",
   "dueDate": "2022-06-22",
   "assignedTo": "Thor",
-  "isDone":false,
-  "isBlocked":true
+  "isDone": false,
+  "isBlocked": true
 }
 
 ### Delete card by ID
@@ -78,14 +78,14 @@ POST http://localhost:8080/users HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "stevie@me.com",
-  "firstName": "Steve",
-  "lastName": "Stevens"
+  "email": "bigtony@me.com",
+  "firstName": "Tony",
+  "lastName": "Gennovese"
 }
 
 ### Get a user by email 
 
-GET http://localhost:8080/users/stevie@me.com
+GET http://localhost:8080/users/bigtony@me.com
 
 ### Delete a user by email
 

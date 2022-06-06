@@ -3,13 +3,14 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const db = {
-  mongoose: mongoose,
-  uri: process.env.MONGODB_URI,
-  //cards: require('./cards.js')(mongoose),
-  //comments: require('./comments.js')(mongoose)
-};
+const db = {};
+db.mongoose = mongoose;
+db.uri = process.env.MONGODB_URI;
+db.cards = require('./cardModel.js');
+db.comments = require('./commentModel.js');
+db.users = require('./userModel');
 
+/*
 const Schema = mongoose.Schema;
 
 const cardSchema = new Schema({
@@ -21,8 +22,16 @@ const cardSchema = new Schema({
     type: String,
     required: [true, "Description is required"]
   },
-  startDate: Date,
-  dueDate: Date,
+  startDate: {
+    type: Date,
+    match: [/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/, "Please enter date: yyyy-mm-dd"],
+    min: [Date.now(), "Start date must be today or later or empty"]
+  },
+  dueDate: {
+    type: Date,
+    match: [/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/, "Please enter date: yyyy-mm-dd"],
+    min: [Date.now(), "Due date must be today or later or empty"]
+  },
   assignedTo: String,
   isDone: {
     type: Boolean,
@@ -35,7 +44,7 @@ const cardSchema = new Schema({
 });
 
 db.cards = mongoose.model('cards', cardSchema);
-
+/*
 const commentSchema = new Schema({
   comment: {
     type: String,
@@ -51,6 +60,7 @@ const commentSchema = new Schema({
   },
   dateAdded: {
     type: Date,
+    match: [/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/, "Please enter date: yyyy-mm-dd"],
     default: Date.now()
   },
   isEdited: {
@@ -58,12 +68,14 @@ const commentSchema = new Schema({
     default: false
   },
   dateEdited: {
-    type: Date
+    type: Date,
+    match: [/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/, "Please enter date: yyyy-mm-dd"],
   }
 });
 
 db.comments = mongoose.model('comments', commentSchema);
 
+/*
 const userSchema = new Schema({
   email: {
     type: String,
@@ -82,5 +94,6 @@ const userSchema = new Schema({
 });
 
 db.users = mongoose.model('users', userSchema);
+*/
 
 module.exports = db;
