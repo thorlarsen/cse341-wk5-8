@@ -19,7 +19,7 @@ exports.createCard = (req, res) => {
     */
 };
 
-exports.getAllCards = (req, res) => {
+exports.getAllCards = (_req, res) => {
   Card.find({})
     .then((data) => {
       res.status(200).send(data);
