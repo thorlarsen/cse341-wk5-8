@@ -16,6 +16,18 @@ exports.createComment = (req, res) => {
     });
     /*
       #swagger.description = 'Create a new comment and add it to the collection'
+      #swagger.parameters['obj'] = {
+        name: 'Example',
+        description: 'Comments fields',
+        schema: {
+          $comment: 'Comment string',
+          $cardID: '_id of card to add comment to',
+          $user: 'Name of user adding card',
+          dateAdded: 'yyyy-mm-dd',
+          isEdited: false,
+          dateEdited: 'yyyy-mm-dd'
+        }
+      }
     */
 };
 
@@ -62,6 +74,19 @@ exports.updateCommentById = (req, res, next) => {
     });
     /*
       #swagger.description = 'Find one comment by _id and update it.'
+      #swagger.parameters['obj'] = {
+        name: 'Example',
+        in: 'body',
+        description: 'Comments fields',
+        schema: {
+          comment: 'Comment string',
+          cardID: '_id of card to add comment to',
+          user: 'Name of user adding card',
+          dateAdded: 'yyyy-mm-dd',
+          isEdited: false,
+          dateEdited: 'yyyy-mm-dd'
+        }
+      }
     */
 };
 

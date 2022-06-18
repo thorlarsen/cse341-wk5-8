@@ -18,16 +18,15 @@ exports.createCard = (req, res) => {
       #swagger.description = 'Create a new card and add it to the collection'
       #swagger.parameters['obj'] = {
         name: 'Example',
-        in: 'body',
         description: 'Card fields',
         schema: {
           $title: 'Card Title',
           $description: 'Description of card',
           startDate: 'yyyy-mm-dd',
           dueDate: 'yyyy-mm-dd',
-          $assignedTo: 'name of assignee',
-          isDone: 'false',
-          isBlocked: 'false'
+          assignedTo: 'name of assignee',
+          isDone: false,
+          isBlocked: false
         }
       }
     */
@@ -88,6 +87,20 @@ exports.updateCardById = (req, res) => {
     });
     /*
       #swagger.description = 'Update one card based on MongoDB _id'
+      #swagger.parameters['obj'] = {
+        name: 'Example',
+        in: 'body',
+        description: 'Card fields',
+        schema: {
+          title: 'Card Title',
+          description: 'Description of card',
+          startDate: 'yyyy-mm-dd',
+          dueDate: 'yyyy-mm-dd',
+          assignedTo: 'name of assignee',
+          isDone: false,
+          isBlocked: false
+        }
+      }
     */
 };
 

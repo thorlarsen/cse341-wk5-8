@@ -28,7 +28,6 @@
         "parameters": [
           {
             "name": "Example",
-            "in": "body",
             "description": "Card fields",
             "schema": {
               "type": "object",
@@ -54,20 +53,20 @@
                   "example": "name of assignee"
                 },
                 "isDone": {
-                  "type": "string",
-                  "example": "false"
+                  "type": "boolean",
+                  "example": false
                 },
                 "isBlocked": {
-                  "type": "string",
-                  "example": "false"
+                  "type": "boolean",
+                  "example": false
                 }
               },
               "required": [
                 "title",
-                "description",
-                "assignedTo"
+                "description"
               ]
-            }
+            },
+            "in": "query"
           }
         ],
         "responses": {
@@ -119,31 +118,39 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "Example",
             "in": "body",
+            "description": "Card fields",
             "schema": {
               "type": "object",
               "properties": {
                 "title": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Card Title"
                 },
                 "description": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Description of card"
                 },
                 "startDate": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "yyyy-mm-dd"
                 },
                 "dueDate": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "yyyy-mm-dd"
                 },
                 "assignedTo": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "name of assignee"
                 },
                 "isDone": {
-                  "example": "any"
+                  "type": "boolean",
+                  "example": false
                 },
                 "isBlocked": {
-                  "example": "any"
+                  "type": "boolean",
+                  "example": false
                 }
               }
             }
@@ -178,7 +185,47 @@
     "/comments/": {
       "post": {
         "description": "Create a new comment and add it to the collection",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "Example",
+            "description": "Comments fields",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "comment": {
+                  "type": "string",
+                  "example": "Comment string"
+                },
+                "cardID": {
+                  "type": "string",
+                  "example": "_id of card to add comment to"
+                },
+                "user": {
+                  "type": "string",
+                  "example": "Name of user adding card"
+                },
+                "dateAdded": {
+                  "type": "string",
+                  "example": "yyyy-mm-dd"
+                },
+                "isEdited": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "dateEdited": {
+                  "type": "string",
+                  "example": "yyyy-mm-dd"
+                }
+              },
+              "required": [
+                "comment",
+                "cardID",
+                "user"
+              ]
+            },
+            "in": "query"
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -218,13 +265,35 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "Example",
             "in": "body",
+            "description": "Comments fields",
             "schema": {
               "type": "object",
               "properties": {
                 "comment": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Comment string"
+                },
+                "cardID": {
+                  "type": "string",
+                  "example": "_id of card to add comment to"
+                },
+                "user": {
+                  "type": "string",
+                  "example": "Name of user adding card"
+                },
+                "dateAdded": {
+                  "type": "string",
+                  "example": "yyyy-mm-dd"
+                },
+                "isEdited": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "dateEdited": {
+                  "type": "string",
+                  "example": "yyyy-mm-dd"
                 }
               }
             }
@@ -259,7 +328,35 @@
     "/users/": {
       "post": {
         "description": "Create a new user and add it to the users collection",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "Example",
+            "in": "body",
+            "description": "Comments fields",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "user@email.com"
+                },
+                "firstName": {
+                  "type": "string",
+                  "example": "John"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Doe"
+                }
+              },
+              "required": [
+                "email",
+                "firstName",
+                "lastName"
+              ]
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"

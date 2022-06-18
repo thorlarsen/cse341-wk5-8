@@ -16,6 +16,16 @@ exports.createUser = (req, res) => {
     });
     /*
       #swagger.description = 'Create a new user and add it to the users collection'
+      #swagger.parameters['obj'] = {
+        name: 'Example',
+        in: 'body',
+        description: 'Comments fields',
+        schema: {
+          $email: 'user@email.com',
+          $firstName: 'John',
+          $lastName: 'Doe',
+        }
+      }
     */
 };
 
