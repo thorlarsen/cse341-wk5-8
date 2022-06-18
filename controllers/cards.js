@@ -22,6 +22,12 @@ exports.createCard = (req, res) => {
         description: 'Card fields',
         schema: {
           $title: 'Card Title',
+          $description: 'Description of card',
+          startDate: 'yyyy-mm-dd',
+          dueDate: 'yyyy-mm-dd',
+          $assignedTo: 'name of assignee',
+          isDone: 'false',
+          isBlocked: 'false'
         }
       }
     */
