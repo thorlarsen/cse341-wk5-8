@@ -5,13 +5,13 @@ const routes = express.Router();
 const createError = require('http-errors');
 const { isAuthenticated } = require('express-openid-connect');
 
-require('../middleware/auth').auth;
+require('../middleware/auth').authent;
 
 // Valid routes
-routes.use('/', (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? 'Task Manager Logged in' : 'Task Manager Logged out');
-}); 
-
+//routes.use('/', (req, res) => {
+//  res.send(req.oidc.isAuthenticated ? 'Task Manager Logged in' : 'Task Manager Logged out');
+//}); 
+routes.use('/', require('./home'));
 routes.use('/cards', require('./cards'));
 routes.use('/comments', require('./comments'));
 routes.use('/users', require('./users'));
