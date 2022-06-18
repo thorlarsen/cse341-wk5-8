@@ -36,10 +36,36 @@
                 "title": {
                   "type": "string",
                   "example": "Card Title"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Description of card"
+                },
+                "startDate": {
+                  "type": "string",
+                  "example": "yyyy-mm-dd"
+                },
+                "dueDate": {
+                  "type": "string",
+                  "example": "yyyy-mm-dd"
+                },
+                "assignedTo": {
+                  "type": "string",
+                  "example": "name of assignee"
+                },
+                "isDone": {
+                  "type": "string",
+                  "example": "false"
+                },
+                "isBlocked": {
+                  "type": "string",
+                  "example": "false"
                 }
               },
               "required": [
-                "title"
+                "title",
+                "description",
+                "assignedTo"
               ]
             }
           }
