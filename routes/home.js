@@ -8,4 +8,8 @@ routes.get('/', (_req, res) => {
   res.status(307).redirect('/api-docs');
 }); 
 
+/*
+  #swagger.description = "Redirects to /api-docs"
+*/
+
 module.exports = routes;

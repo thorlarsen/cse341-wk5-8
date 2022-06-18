@@ -14,9 +14,6 @@ exports.createCard = (req, res) => {
     .catch((err) => {
       res.status(500).send(err.message || 'There was a problem with updating the database');
     });
-    /*
-      #swagger.description = 'Create a new card and add it to the collection'
-    */
 };
 
 exports.getAllCards = (_req, res) => {
