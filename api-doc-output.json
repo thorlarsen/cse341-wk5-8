@@ -13,55 +13,43 @@
   "paths": {
     "/": {
       "get": {
-        "description": "This will be changed soon. Use GET /cards instead.",
+        "description": "Redirects to /api-docs",
         "parameters": [],
         "responses": {
           "307": {
             "description": "Temporary Redirect"
           }
-        },
-        "deprecated": true
+        }
       }
     },
     "/cards/": {
       "post": {
         "description": "Create a new card and add it to the collection",
-        "parameters": [{
-          "name": "body",
-          "in": "body",
-          "schema": {
-            "type": "object",
-            "properties": {
-              "title": {
-                "example": "any"
+        "parameters": [
+          {
+            "name": "Example",
+            "in": "body",
+            "description": "Card fields",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Card Title"
+                }
               },
-              "description": {
-                "example": "any"
-              },
-              "startDate": {
-                "example": "any"
-              },
-              "dueDate": {
-                "example": "any"
-              },
-              "assignedTo": {
-                "example":"any"
-              },
-              "isDone": {
-                "example": "any"
-              },
-              "isBlocked": {
-                "example":"any"
-              }
+              "required": [
+                "title"
+              ]
             }
           }
-        }],
+        ],
         "responses": {
           "201": {
             "description": "Created"
           },
-          "403": {
-            "description": "Forbidden"
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -92,9 +80,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -160,9 +145,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "403": {
-            "description": "Forbidden"
           }
         }
       }
@@ -170,33 +152,7 @@
     "/comments/": {
       "post": {
         "description": "Create a new comment and add it to the collection",
-        "parameters": [{
-          "name": "body",
-          "in": "body",
-          "schema": {
-            "type": "object",
-            "properties": {
-              "comment": {
-                "example": "any"
-              },
-              "cardId": {
-                "example": "any"
-              },
-              "user": {
-                "example": "any"
-              },
-              "dateAdded": {
-                "example": "any"
-              },
-              "isEdited": {
-                "example":false
-              },
-              "dateEdited": {
-                "example": "any"
-              }
-            }
-          }
-        }],
+        "parameters": [],
         "responses": {
           "201": {
             "description": "Created"
@@ -221,9 +177,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -254,9 +207,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "403": {
-            "description": "Forbidden"
           }
         }
       },
@@ -283,24 +233,7 @@
     "/users/": {
       "post": {
         "description": "Create a new user and add it to the users collection",
-        "parameters": [{
-          "name": "body",
-          "in": "body",
-          "schema": {
-            "type": "object",
-            "properties": {
-              "email": {
-                "example": "any"
-              },
-              "firstName": {
-                "example": "any"
-              },
-              "lastName": {
-                "example": "any"
-              }
-            }
-          }
-        }],
+        "parameters": [],
         "responses": {
           "201": {
             "description": "Created"

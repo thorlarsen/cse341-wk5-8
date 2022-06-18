@@ -14,6 +14,17 @@ exports.createCard = (req, res) => {
     .catch((err) => {
       res.status(500).send(err.message || 'There was a problem with updating the database');
     });
+    /*
+      #swagger.description = 'Create a new card and add it to the collection'
+      #swagger.parameters['obj'] = {
+        name: 'Example',
+        in: 'body',
+        description: 'Card fields',
+        schema: {
+          $title: 'Card Title',
+        }
+      }
+    */
 };
 
 exports.getAllCards = (_req, res) => {
