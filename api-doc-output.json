@@ -28,6 +28,7 @@
         "parameters": [
           {
             "name": "Example",
+            "in": "body",
             "description": "Card fields",
             "schema": {
               "type": "object",
@@ -65,8 +66,7 @@
                 "title",
                 "description"
               ]
-            },
-            "in": "query"
+            }
           }
         ],
         "responses": {

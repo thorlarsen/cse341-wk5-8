@@ -18,6 +18,7 @@ exports.createCard = (req, res) => {
       #swagger.description = 'Create a new card and add it to the collection'
       #swagger.parameters['obj'] = {
         name: 'Example',
+        in: 'body',
         description: 'Card fields',
         schema: {
           $title: 'Card Title',
