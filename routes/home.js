@@ -4,8 +4,9 @@
 
 const routes = require('express').Router();
 
-routes.get('/', (_req, res) => {
-  res.status(307).redirect('/api-docs');
+routes.get('/', (req, res) => {
+  //res.status(307).redirect('/api-docs');
+  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 /*
   #swagger.description = "Redirects to /api-docs"
 */
