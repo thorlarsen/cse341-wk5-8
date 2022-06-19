@@ -13,4 +13,6 @@ const config = {
   issuerBaseURL: process.env.ISSUER_BASE_URL
 };
 
-exports.auth = app.use(auth(config));
+authent = app.use(auth(config));
+
+module.exports = authent;
