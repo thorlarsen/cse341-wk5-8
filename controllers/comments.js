@@ -18,6 +18,7 @@ exports.createComment = (req, res) => {
       #swagger.description = 'Create a new comment and add it to the collection'
       #swagger.parameters['obj'] = {
         name: 'Example',
+        in: 'body',
         description: 'Comments fields',
         schema: {
           $comment: 'Comment string',
