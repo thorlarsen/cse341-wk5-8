@@ -1,5 +1,5 @@
 /* 
-  The route for the root path is redirected to /api-docs. 
+  The route for the root path shows logged in or logged out 
 */
 
 const routes = require('express').Router();
@@ -8,8 +8,9 @@ routes.get('/', (req, res) => {
   //res.status(307).redirect('/api-docs');
   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 /*
-  #swagger.description = "Redirects to /api-docs"
+  #swagger.description = "Shows login and logout status"
 */
+
 }); 
 
 

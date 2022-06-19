@@ -13,11 +13,11 @@
   "paths": {
     "/": {
       "get": {
-        "description": "Redirects to /api-docs",
+        "description": "Shows login and logout status",
         "parameters": [],
         "responses": {
-          "307": {
-            "description": "Temporary Redirect"
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -405,13 +405,6 @@
             "description": "Forbidden"
           }
         }
-      }
-    },
-    "/api-docs/": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
       }
     }
   }
